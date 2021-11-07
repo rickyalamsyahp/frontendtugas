@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '../Button/Button.view.js';
 import { Link } from 'react-router-dom';
 import './Navbar.styled.css';
-import logo from './KOPANA-BANDUNG.png';
+import logo from '../../KOPANA-BANDUNG.png';
 
 function Navbar() {
   const [click, setClick] = useState(false);

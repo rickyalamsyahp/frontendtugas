@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
+import {ImageSliderData} from '../../Slider/ImageSlider.data';
+import ImageSlider from '../../Slider/ImageSlider.view';
+import Navbar from '../../Navbar/Navbar.view';
 
 const Home = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return (
+    <div>
+      <Navbar />
+      <ImageSlider slides={ImageSliderData} />
+    </div>
+  );
+};
 
-export default Home
-
+export default Home;

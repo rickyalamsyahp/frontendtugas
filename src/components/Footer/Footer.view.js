@@ -33,7 +33,7 @@ const Footer = () => {
         <div className='leftFooter'>
           <b>Tentang Kami</b>
           <p>
-            <Link to='/FAQ'>FAQ</Link>
+            <Link to='/'>FAQ</Link>
             <br/>
             <Link to='/peminjaman'>Peminjaman</Link>
             <br/>

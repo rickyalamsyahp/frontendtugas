@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useMemo} from 'react';
 import {
   Nav,
   NavLink,
@@ -9,15 +9,19 @@ import {
   Logo
 } from './Navbar.styled';
 import image from '../../images/logo.svg'
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 
 const Navbar = () => {
+  
   return (
     <>
       <Nav>
         <NavLink to='/'>
             <img src={image} alt={'Logo'} style={{height:"70px"}}/>
         </NavLink>
-        <Bars />
+        <Bars/>    
         <NavMenu>
           <NavLink to='/beranda' activeStyle>
             Beranda
@@ -32,7 +36,7 @@ const Navbar = () => {
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+          <NavBtnLink to='/login'>Log In</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

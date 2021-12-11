@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route ,Link, Routes} from "react-router-dom";
 import Home from "./components/pages/Home/Home.view";
 import Gallery from "./components/pages/Gallery/Gallery.view";
 import Peminjaman from "./components/pages/Peminjaman/Peminjaman.view"
+import Login from "./components/pages/Login/Login.pages";
+import Daftar from "./components/pages/Daftar/Daftar.view";
+import SyaratPeminjaman from "./components/pages/SyaratPeminjaman/SyaratPeminjaman.view";
 function App() {
   return (
     <Router>
@@ -11,8 +14,9 @@ function App() {
         <Route exact path="/gallery" element={<Gallery />} />
         <Route exact path="/beranda" element={<Home />} />
         <Route exact path="/peminjaman" element={<Peminjaman />} />
-
-
+        <Route exact path='/login' element={<Login/>}/>
+        <Route exact path='/daftar' element={<Daftar/>}/>
+        <Route exact path='/SyaratPeminjaman' element={<SyaratPeminjaman/>}/>
       </Routes>
     </Router>
     

@@ -38,6 +38,8 @@ const Footer = () => {
             <Link to='/peminjaman'>Peminjaman</Link>
             <br/>
             <Link to='/SyaratPeminjaman'>Syarat Peminjaman</Link>
+            <br/>
+            <Link to='/profile'>Profile</Link>
           </p>
         </div>
         <div className='midFooter'>

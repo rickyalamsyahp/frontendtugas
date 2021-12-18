@@ -30,6 +30,7 @@ const FormPeminjaman = () => {
         </label>
     <br/>
       <div class="form-group row">
+        <br />
         <label for="noPeminjaman" class="col-sm-2 col-form-label">
           Nomor Peminjaman
         </label>

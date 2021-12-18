@@ -6,6 +6,8 @@ import Peminjaman from "./components/pages/Peminjaman/Peminjaman.view"
 import Login from "./components/pages/Login/Login.pages";
 import Daftar from "./components/pages/Daftar/Daftar.view";
 import SyaratPeminjaman from "./components/pages/SyaratPeminjaman/SyaratPeminjaman.view";
+import Profile from "./components/pages/Profile/Profile.view";
+import ProfileSetting from "./components/pages/ProfileSetting/ProfileSetting.view";
 function App() {
   return (
     <Router>
@@ -17,6 +19,8 @@ function App() {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/daftar' element={<Daftar/>}/>
         <Route exact path='/SyaratPeminjaman' element={<SyaratPeminjaman/>}/>
+        <Route exact path='/profile' element={<Profile/>}/>
+        <Route exact path='/profile-setting' element={<ProfileSetting/>}/>
       </Routes>
     </Router>
     

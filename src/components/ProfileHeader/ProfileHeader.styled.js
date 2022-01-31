@@ -10,6 +10,9 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 65px;
   width: 65px;
+  top:150px;
+  position:absolute;
+
   cursor: pointer;
 
   &.active {

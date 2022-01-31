@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../Button/Button.view.js";
 import { Link } from "react-router-dom";
-import "./Footer.styled.css";
+import "./FooterLogin.styled.css";
 import iconWa from '../../iconwhatsapp.png';
 import iconGmail from '../../icongmail.png';
 
@@ -33,11 +33,11 @@ const Footer = () => {
         <div className='leftFooter'>
           <b>Tentang Kami</b>
           <p>
-            <Link to='/beranda'>FAQ</Link>
+            <Link to='/beranda-login'>FAQ</Link>
             <br/>
-            <Link to='/pangkalan'>Pangkalan</Link>
+            <Link to='/pangkalan-login'>Pangkalan</Link>
             <br/>
-            <Link to='/SyaratPangkalan'>Syarat Pangkalan</Link>
+            <Link to='/SyaratPangkalan-login'>Syarat Pangkalan</Link>
             <br/>
           </p>
         </div>

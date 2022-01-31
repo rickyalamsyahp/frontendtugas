@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <ImageSlider slides={ImageSliderData} />
+      <ImageSlider  />
       <Faq />
       <Footer />
     </div>

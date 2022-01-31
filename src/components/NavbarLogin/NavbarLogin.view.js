@@ -7,13 +7,13 @@ import {
   NavBtn,
   NavBtnLink,
   Logo
-} from './Navbar.styled';
+} from './NavbarLogin.styled';
 import image from '../../images/logo.svg'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
-const Navbar = () => {
+const NavbarLogin = () => {
   
   return (
     <>
@@ -23,24 +23,24 @@ const Navbar = () => {
         </NavLink>
         <Bars/>    
         <NavMenu>
-          <NavLink to='/beranda' activeStyle>
+          <NavLink to='/beranda-login' activeStyle>
             Beranda
           </NavLink>
-          <NavLink to='/gallery' activeStyle>
+          <NavLink to='/gallery-login' activeStyle>
             Galeri
           </NavLink>
-          <NavLink to='/pangkalan' activeStyle>
+          <NavLink to='/pangkalan-login' activeStyle>
             Pangkalan
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/login'>Log In</NavBtnLink>
+          <NavBtnLink to='/profile'>Profile</NavBtnLink>
         </NavBtn>
       </Nav>
     </>
   );
 };
 
-export default Navbar;
+export default NavbarLogin;

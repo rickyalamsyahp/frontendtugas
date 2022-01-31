@@ -29,24 +29,19 @@ function TabGroup() {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <h2>Content 1</h2>
-          <hr />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            praesentium incidunt quia aspernatur quasi quidem facilis quo nihil
-            vel voluptatum?
-          </p>
+          <div className="containerTanggalKet">
+            <div className="tanggal">Tanggal</div>
+            <div className="keterangan">Keterangan</div>
+          </div>
         </div>
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <h2>Content 2</h2>
-          <hr />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-            voluptatum qui adipisci.
-          </p>
+          <div className="containerTanggalKet">
+            <div className="tanggal">Tanggal</div>
+            <div className="keterangan">Keterangan</div>
+          </div>
         </div>
       </div>
     </div>

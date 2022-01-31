@@ -1,22 +1,44 @@
+import axios from "axios";
 import React, { useState, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
+import './Daftar.styled.css';
 
 const Daftar = () => {
   const [name, setName] = useState("");
   const [noPegawai, setNoPegawai] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [address1, setAddress1] = useState("");
   const [noDihubungi, setNoDihubungi] = useState("");
   const [setuju, setSetuju] = useState("");
-  const AddFormData = (e) => {
+  const [kartuPertamina, setKartuPertamina] = useState([])
+  const AddFormData = async (e) => {
     e.preventDefault();
-    FormData({ name, noPegawai, email, address1, noDihubungi, setuju });
-    setName("");
-    setNoDihubungi("");
-    setNoPegawai("");
-    setAddress1("");
-    setEmail("");
-    setSetuju(false);
+    const url = "http://localhost:3000/api/v1/signUp"
+    const url2 = 'http://localhost:3000/api/v1/member'
+    const data ={
+      nama: name,
+      password: password,
+      alamat: address1,
+      email: email,
+      noPegawaiPertamina: noPegawai,
+      noTlpn: noDihubungi,
+    }
+    const res = await axios.post(url, data)
+    const res2 = await axios.post(url2,data)
+    console.log(res);
+    // FormData({ name, noPegawai, email, address1, noDihubungi, setuju,password });
+    // setName("");
+    // setNoDihubungi("");
+    // setNoPegawai("");
+    // setAddress1("");
+    // setEmail("");
+    // setPassword("");
+    // setSetuju(false);
+
+    if (res.status == 200) {
+      window.open('/beranda-login','_self')
+    }
   };
   const {
     getRootProps,
@@ -64,6 +86,8 @@ const Daftar = () => {
   );
   return (
     <form onSubmit={AddFormData}>
+      <h2 style={{textAlign:'center',marginTop:'30px'}}>Daftar Menjadi Anggota</h2>
+      <div className="containers">
       <div class="form-group row">
         <label for="name" class="col-sm-2 col-form-label">
           Nama
@@ -73,6 +97,7 @@ const Daftar = () => {
             type="text"
             class="form-control"
             id="name"
+            className="inputan"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -87,6 +112,7 @@ const Daftar = () => {
             type="text"
             class="form-control"
             id="Address1"
+            className="inputan"
             value={address1}
             onChange={(e) => setAddress1(e.target.value)}
           />
@@ -101,8 +127,24 @@ const Daftar = () => {
             type="text"
             class="form-control"
             id="email"
+            className="inputan"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passowrd" class="col-sm-2 col-form-label">
+          Password
+        </label>
+        <div class="col-sm-10">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            className="inputan"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
@@ -114,6 +156,7 @@ const Daftar = () => {
           <input
             type="text"
             class="form-control"
+            className="inputan"
             id="noPegawai"
             value={noPegawai}
             onChange={(e) => setNoPegawai(e.target.value)}
@@ -129,21 +172,26 @@ const Daftar = () => {
             type="text"
             class="form-control"
             id="noDihubungi"
+            className="inputan"
             value={noDihubungi}
             onChange={(e) => setNoDihubungi(e.target.value)}
           />
         </div>
       </div>
-      <div class="form-group row">
-        <label for="photo" class="col-sm-2 col-form-label">
-          Upload Foto Kartu Pegawai Pertamina
-        </label>
+      <div class="form-group row">  
         <div class="col-sm-10">
-          <div className="container">
-            <div {...getRootProps({ style })}>
-              <input {...getInputProps()} />
-              <p>Drag 'n' drop some files here, or click to select files</p>
-            </div>
+          <div className="containerDropzone">
+          <span for="myfile">
+            Upload Foto Kartu Pertamina :{" "}
+          </span>
+          <input
+            type="file"
+            id="myfile"
+            name="myfile"
+            value={kartuPertamina}
+            onChange={(e) => setKartuPertamina(e.target.value)}
+          />
+          <br />
           </div>
         </div>
       </div>
@@ -159,9 +207,10 @@ const Daftar = () => {
           Saya Setuju Untuk Menjadi Anggota KOPANA Bandung
         </label>
       </div>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" style={{marginTop:'10px'}}>
         Submit
       </button>
+      </div>
     </form>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect ,useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -7,8 +7,11 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import gridData from './Grid.data';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
+  
+
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -29,18 +32,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TitlebarGridList() {
+const TitlebarGridList = () =>  {
+  const [foto,setFoto] = useState([])
   const classes = useStyles();
 
+  async function getData(){
+    try {
+      const response = await axios.get('http://localhost:3000/api/v1/galeri');
+      console.log(response);
+      setFoto(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <div className={classes.root}>
       <GridList cellHeight={300}  spacing={30} className={classes.gridList}>
         <GridListTile key="Subheader" cols={4} style={{ height: 'auto' }}>
           <ListSubheader component="div"></ListSubheader>
         </GridListTile>
-        {gridData.map((tile) => (
+        {foto.data &&foto.data.map((tile) => (
           <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
+            <img src={'http://localhost:3000/'+tile.imageUrl} alt={tile.title} />
+            {console.log(tile.imageUrl)}
             <GridListTileBar
               title={tile.title}
               actionIcon={
@@ -55,3 +73,5 @@ export default function TitlebarGridList() {
     </div>
   );
 }
+
+export default TitlebarGridList

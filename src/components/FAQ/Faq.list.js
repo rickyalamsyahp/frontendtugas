@@ -17,7 +17,7 @@ const faqData = [
 const FaqList = () => {
   return (
     <StyledFaqList>
-        <div className={'faqTitle'}>FAQ</div>
+        <div className={'faqTitle'} id='faqTop'>FAQ</div>
       {faqData.map((faq, i) => (
         <Faq key={"faq_" + i} question={faq.question} answer={faq.answer} />
       ))}

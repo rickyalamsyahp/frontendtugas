@@ -45,3 +45,11 @@
     transform: scale(1.08);
   }
   
+
+.rc-tabs-tab{
+  padding-right: 200px !important;
+}
+
+.rc-tabs{
+  border: 0 !important;
+}

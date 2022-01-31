@@ -1,17 +1,16 @@
 import React from "react";
-import Navbar from '../../Navbar/Navbar.view';
 import FooterLogin from "../../FooterLogin/FooterLogin.view";
-import Setting from "../../Setting/Setting.view";
 import NavbarLogin from "../../NavbarLogin/NavbarLogin.view";
+import TitlebarGridList from "../../Grid/Grid.view";
 
-const ProfileSetting = () => {
+const GalleryLogin = () => {
   return (
     <div>
       <NavbarLogin />
-      <Setting/>
+      <TitlebarGridList/>      
       <FooterLogin />
     </div>
   );
 };
 
-export default ProfileSetting;
+export default GalleryLogin;

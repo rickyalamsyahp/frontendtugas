@@ -15,7 +15,6 @@ const Daftar = () => {
   const AddFormData = async (e) => {
     e.preventDefault();
     const url = "http://localhost:3000/api/v1/signUp"
-    const url2 = 'http://localhost:3000/api/v1/member'
     const data ={
       nama: name,
       password: password,
@@ -25,7 +24,6 @@ const Daftar = () => {
       noTlpn: noDihubungi,
     }
     const res = await axios.post(url, data)
-    const res2 = await axios.post(url2,data)
     console.log(res);
     // FormData({ name, noPegawai, email, address1, noDihubungi, setuju,password });
     // setName("");

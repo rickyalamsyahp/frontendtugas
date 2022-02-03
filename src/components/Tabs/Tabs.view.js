@@ -1,14 +1,35 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
 import "./Tabs.styled.css";
 
 function TabGroup() {
   const [toggleState, setToggleState] = useState(1);
+  const [test, setTest]= useState({})
+  const [loading, setIsLoading] = useState(true)
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  return (
+
+  const getUser= async() => {
+    try {
+      let tes = JSON.parse(localStorage.getItem("user"))
+      // console.log(tes.id);
+    const response = await axios.get(`http://localhost:3000/api/v1/member/${tes.id}`);
+      console.log(response.data);
+      setTest(response.data)
+      setIsLoading(false)
+    } catch (error) {
+      console.error(error);
+    }
+}
+useEffect(()=>{
+    getUser()
+  },[])
+
+  return loading? "Loading": (
     <div className="container">
       <div className="bloc-tabs">
         <button
@@ -40,7 +61,13 @@ function TabGroup() {
         >
           <div className="containerTanggalKet">
             <div className="tanggal">Tanggal</div>
+           {test.setoranId.map((d)=>(
+             <div>{d.tanggal}</div>
+           ))}
             <div className="keterangan">Keterangan</div>
+            {test.setoranId.map((d)=>(
+             <div>{d.deskripsi}</div>
+           ))}
           </div>
         </div>
       </div>

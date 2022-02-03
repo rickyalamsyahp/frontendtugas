@@ -47,19 +47,20 @@ const FormPeminjaman = (props) => {
   //   setLPG("");
   //   setSetuju(false);
   // };
+  
   const AddFormData = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('nama', nama)
+    formData.append('alamatRumah', alamatRumah)
+    formData.append('alamatPangkalan', alamatPangkalan)
+    formData.append('imageKeteranganUsaha', keteranganUsaha)
+    formData.append('imageSuratTeraTimbangan', suratTeraTimbangan)
+    formData.append('imageKelengkapanSarana', kelengkapanSarana)
+    formData.append('imageKtp', ktp)
     const url = "http://localhost:3000/api/v1/formulir"
-    const data ={
-      nama:nama,
-      alamatRumah: alamatRumah,
-      alamatPangkalan: alamatPangkalan,
-      imageKtp: ktp,
-      imageKeteranganUsaha: keteranganUsaha,
-      imageSuratTeraTimbangan: suratTeraTimbangan,
-      imageKelengkapanSarana: kelengkapanSarana,
-    }
-    const res = await axios.post(url, data)
+
+    const res = await axios.post(url, formData)
     console.log(res);
     // FormData({ name, noPegawai, email, address1, noDihubungi, setuju,password });
     // setName("");
@@ -70,9 +71,9 @@ const FormPeminjaman = (props) => {
     // setPassword("");
     // setSetuju(false);
 
-    if (res.status == 200) {
-      window.open('/beranda','_self')
-    }
+    // if (res.status == 200) {
+    //   window.open('/beranda','_self')
+    // }
   };
   const {
     getRootProps,
@@ -165,10 +166,7 @@ const FormPeminjaman = (props) => {
           <span for="myfile">Upload Foto KTP : </span>
           <input
             type="file"
-            id="myfile"
-            name="myfile"
-            value={ktp}
-            onChange={(e) => setKtp(e.target.value)}
+            onChange={(e) => setKtp(e.target.files[0])}
           />
           <br />
         </div>
@@ -176,10 +174,7 @@ const FormPeminjaman = (props) => {
           <span for="myfile">Surat Keterangan Usaha : </span>
           <input
             type="file"
-            id="myfile"
-            name="myfile"
-            value={keteranganUsaha}
-            onChange={(e) => setKeteranganUsaha(e.target.value)}
+            onChange={(e) => setKeteranganUsaha(e.target.files[0])}
           />
           <br />
         </div>
@@ -187,10 +182,7 @@ const FormPeminjaman = (props) => {
           <span for="myfile">Surat Tera Timbangan LPG 3 kg : </span>
           <input
             type="file"
-            id="myfile"
-            name="myfile"
-            value={suratTeraTimbangan}
-            onChange={(e) => setSuratTeraTimbangan(e.target.value)}
+            onChange={(e) => setSuratTeraTimbangan(e.target.files[0])}
           />
           <br />
         </div>
@@ -200,10 +192,7 @@ const FormPeminjaman = (props) => {
           </span>
           <input
             type="file"
-            id="myfile"
-            name="myfile"
-            value={kelengkapanSarana}
-            onChange={(e) => setkelengkapanSarana(e.target.value)}
+            onChange={(e) => setkelengkapanSarana(e.target.files[0])}
           />
           <br />
         </div>

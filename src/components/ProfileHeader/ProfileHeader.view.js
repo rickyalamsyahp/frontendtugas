@@ -6,11 +6,16 @@ import axios from 'axios'
 
 
 const ProfileHeader = () => {
-    const [member, setMember] = useState("");
-    async function getUser() {
+    const [member, setMember] = useState({});
+    const [loading, setIsLoading] = useState(true)
+  const getUser= async() => {
         try {
-          const response = await axios.get('http://localhost:3000/api/v1/member');
-          console.log(response);
+          let tes = JSON.parse(localStorage.getItem("user"))
+          // console.log(tes.id);
+        const response = await axios.get(`http://localhost:3000/api/v1/member/${tes.id}`);
+          console.log(response.data);
+          setMember(response.data)
+          setIsLoading(false)
         } catch (error) {
           console.error(error);
         }
@@ -18,7 +23,7 @@ const ProfileHeader = () => {
     useEffect(()=>{
         getUser()
       },[])
-    return (
+    return loading? "Loading": (
       <div style={{display:'inline-block',width:'100%',marginTop:'20px',}}>
         <img
           src={profileImg}
@@ -40,9 +45,9 @@ const ProfileHeader = () => {
             verticalAlign: "middle",
           }}
         >
-          Julian
+          {member.nama}
         </h2>
-        <NavLink to="/profile-setting" >
+        <NavLink to="/profile-setting">
           <img
             src={image}
             alt={"Logo"}

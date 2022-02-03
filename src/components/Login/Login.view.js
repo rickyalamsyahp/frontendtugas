@@ -22,6 +22,7 @@ const Login = () => {
     const res = await axios.post(url, data )
     console.log(res);
     if (res.status == 200) {
+      localStorage.setItem("user", JSON.stringify(res.data.data))
       window.open('/beranda-login','_self')
     }
   }
